@@ -41,24 +41,15 @@
             key.classList.add("playing");
             audio.currentTime = 0;
             audio.play();
+            key.addEventListener("transitionend", function() {
+                key.classList.remove("playing");
+            })
         }
-        function removePlaying(e) {
-            // var key = document.querySelector(`li[data-key="${e.keyCode}"]`);
-            e.target.key.classList.remove("playing");
-        }
-        window.addEventListener("keydown", playSound);
-        // window.addEventListener("transitioned", removePlaying);
-        var lis = document.getElementsByClassName("key");
-        // for(var i=0; i<lis.length; i++) {
-        //     window.addEventListener("transitioned", removePlaying);
+        // function removePlaying(e) {
+        //     // var key = document.querySelector(`li[data-key="${e.keyCode}"]`);
+        //     e.target.key.classList.remove("playing");
         // }
-        window.addEventListener("transitioned", function() {
-            for (var i = 0; i < lis.length; i++) {
-                // removePlaying();
-                lis[i].classList.remove("playing");
-            }
-        });
-        
+        window.addEventListener("keydown", playSound);
     </script>
 </body>
 </html>
